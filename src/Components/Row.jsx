@@ -8,10 +8,10 @@ const Row = ({title,fethUrlApi}) => {
     const [movie,setMovies] = useState([])
     const [isLiked,setIsLiked] = useState(false)
 
-    useEffect(() => {
-        axios.get(fethUrlApi).then((res) => {
+    useEffect( async () => {
+        await axios.get(fethUrlApi).then((res) => {
             setMovies(res.data.results)
-        })
+        }).catch((error) => {console.log(error.message)})
     },[fethUrlApi])
     console.log(movie);
   return (
